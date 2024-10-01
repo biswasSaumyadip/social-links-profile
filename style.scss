@@ -1,12 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-ipad: 1024px;
+$breakpoint-ipad-pro: 1366px;
 
 $green: hsl(75, 94%, 57%);
 $white: hsl(0, 0%, 100%);
@@ -22,6 +19,55 @@ $spacing-150: 1.2rem;
 $spacing-100: 0.8rem;
 $spacing-50: 0.4rem;
 
+
+@mixin respond-mobile {
+  @media (max-width: $breakpoint-mobile) {
+    @content;
+  }
+}
+
+@mixin respond-tablet {
+  @media (min-width: $breakpoint-mobile + 1) and (max-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin respond-ipad {
+  @media (min-width: $breakpoint-tablet + 1) and (max-width: $breakpoint-ipad) {
+    @content;
+  }
+}
+
+@mixin respond-ipad-pro {
+  @media only screen
+  and (min-device-width: $breakpoint-ipad)
+  and (max-device-width: $breakpoint-ipad-pro)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin respond-ipad-pro-portrait {
+  @media only screen
+  and (min-device-width: $breakpoint-ipad)
+  and (max-device-width: $breakpoint-ipad)
+  and (orientation: portrait)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+@mixin respond-ipad-pro-landscape {
+  @media only screen
+  and (min-device-width: $breakpoint-ipad-pro)
+  and (max-device-width: $breakpoint-ipad-pro)
+  and (orientation: landscape)
+  and (-webkit-min-device-pixel-ratio: 2) {
+    @content;
+  }
+}
+
+
 @mixin text-preset(
   $font-size,
   $font-weight: 500,
@@ -32,6 +78,14 @@ $spacing-50: 0.4rem;
   font-weight: $font-weight;
   line-height: $line-height;
   letter-spacing: $letter-spacing;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -54,6 +108,29 @@ body {
   height: 61.1rem;
   padding: 4rem;
   max-width: 38.4rem;
+
+
+  @include respond-ipad-pro {
+    width: 45.6rem;
+    max-width: 45.6rem;
+  }
+
+  @include respond-ipad {
+    width: 45.6rem;
+    max-width: 45.6rem;
+  }
+
+  @include respond-tablet {
+    width: 45.6rem;
+    max-width: 45.6rem;
+  }
+
+  @include respond-mobile {
+    width: 32.7rem;
+    max-width: 32.7rem;
+    padding: 2.4rem;
+    height: 57.9rem;
+  }
 
   &__layout {
     align-items: center;
@@ -92,6 +169,26 @@ body {
 
   &__navbar {
     max-width: 30.4rem;
+
+    @include respond-ipad-pro {
+      width: 37.6rem;
+      max-width: 37.6rem;
+    }
+
+    @include respond-ipad {
+      width: 37.6rem;
+      max-width: 37.6rem;
+    }
+
+    @include respond-tablet {
+      width: 37.6rem;
+      max-width: 37.6rem;
+    }
+
+    @include respond-mobile {
+      width: 27.9rem;
+      max-width: 27.9rem;
+    }
   }
 
   &__list {
@@ -119,6 +216,26 @@ body {
 
       &:last-child {
         margin-bottom: 0;
+      }
+
+      @include respond-ipad-pro {
+        width: 37.6rem;
+        max-width: 37.6rem;
+      }
+
+      @include respond-ipad {
+        width: 37.6rem;
+        max-width: 37.6rem;
+      }
+
+      @include respond-tablet {
+        width: 37.6rem;
+        max-width: 37.6rem;
+      }
+
+      @include respond-mobile {
+        width: 27.9rem;
+        max-width: 27.9rem;
       }
 
       &-link {
