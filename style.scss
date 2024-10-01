@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+$green: hsl(75, 94%, 57%);
+$white: hsl(0, 0%, 100%);
+$grey-700: hsl(0, 0%, 20%);
+$grey-800: hsl(0, 0%, 12%);
+$grey-900: hsl(0, 0%, 8%);
+
+//spacing
+$spacing-500: 4rem;
+$spacing-300: 2.4rem;
+$spacing-200: 1.6rem;
+$spacing-150: 1.2rem;
+$spacing-100: 0.8rem;
+$spacing-50: 0.4rem;
+
+@mixin text-preset(
+  $font-size,
+  $font-weight: 500,
+  $letter-spacing: 0,
+  $line-height: 150%
+) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $grey-900;
+  font-family: 'Inter', sans-serif;
+  height: 100vh;
+}
+
+.link-card {
+  align-items: center;
+  background-color: $grey-800;
+  border-radius: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-300;
+  height: 61.1rem;
+  padding: 4rem;
+  max-width: 38.4rem;
+
+  &__layout {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: center;
+  }
+
+  &__profile {
+    &--heading {
+      height: 6.1rem;
+      text-align: center;
+      width: 100%;
+
+      &:last-child {
+        margin-top: $spacing-50;
+      }
+
+      &--text {
+        @include text-preset(2.4rem);
+        color: $white;
+      }
+
+      &--sub {
+        @include text-preset(1.4rem, 600);
+        color: $green;
+      }
+    }
+
+    &--picture {
+      border-radius: 50%;
+      width: 8.8rem;
+      height: 8.8rem;
+    }
+  }
+
+  &__navbar {
+    max-width: 30.4rem;
+  }
+
+  &__list {
+    &--item {
+      background-color: $grey-700;
+      border-radius: 0.8rem;
+      list-style: none;
+      margin-bottom: $spacing-200;
+      padding: $spacing-150;
+      text-align: center;
+      transition:
+        background-color 0.2s ease-in,
+        color 0.2s ease-in;
+
+      width: 30.4rem;
+
+      &:hover {
+        background-color: $green;
+        cursor: pointer;
+      }
+
+      &:hover &-link {
+        color: $grey-700;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &-link {
+        @include text-preset(1.4rem, 600);
+        color: $white;
+        text-decoration: none;
+        transition: color 0.2s ease-in;
+
+        &:hover {
+          color: $grey-700;
+        }
+      }
+    }
+  }
+
+  &__quote {
+    @include text-preset(1.4rem, 200);
+    color: $white;
+    font-weight: 300;
+    text-align: center;
+  }
+}
